@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagerPro.Application.Features.Task.Queries.GetAllTasks;
+using TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails;
 
 namespace TaskManagerPro.Application.MappingProfiles
 {
@@ -11,7 +13,8 @@ namespace TaskManagerPro.Application.MappingProfiles
     {
         public TaskProfile()
         {
-            //CreateMap<TaskDto, Task>().ReverseMap;
+            CreateMap<TaskDto, Task>().ReverseMap();
+            CreateMap<Task, TaskDetailsDto>().ReverseMap();
         }
     }
 }

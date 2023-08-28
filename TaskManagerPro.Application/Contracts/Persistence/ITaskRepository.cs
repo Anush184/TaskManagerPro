@@ -8,5 +8,6 @@ namespace TaskManagerPro.Application.Contracts.Persistence
 {
     public interface ITaskRepository : IGenericRepository<Task>
     {
+        Task<bool> IsTaskDescriptionUnique(string description);
     }
 }
