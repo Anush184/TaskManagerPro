@@ -11,7 +11,6 @@ namespace TaskManagerPro.Domain
     {
         public string Name { get; set; } = string.Empty; 
         public string Description { get; set; } = string.Empty;
-        public DateTime StartDate { get; set; } 
         public DateTime? EndDate { get; set; }  
         public string ManagerId { get; set; }  // ID of the project manager (foreign key to User)
         public User Manager { get; set; }  // Navigation property to the project manager

@@ -13,11 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B9271C80-6806-4E27-B7EB-03528A62FE73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Domain", "TaskManagerPro.Domain\TaskManagerPro.Domain.csproj", "{E419BC82-BBCF-4CCD-B8D9-A4FDF91B268C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerPro.Domain", "TaskManagerPro.Domain\TaskManagerPro.Domain.csproj", "{E419BC82-BBCF-4CCD-B8D9-A4FDF91B268C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Application", "TaskManagerPro.Application\TaskManagerPro.Application.csproj", "{918131DF-9947-40C0-A702-A68E36FFBC5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerPro.Application", "TaskManagerPro.Application\TaskManagerPro.Application.csproj", "{918131DF-9947-40C0-A702-A68E36FFBC5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A3FBFDD1-7F93-4824-A47F-14427EE14FCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Persistence", "TaskManagerPro.Persistence\TaskManagerPro.Persistence.csproj", "{59A32F24-B014-457A-954E-54D59865322F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{918131DF-9947-40C0-A702-A68E36FFBC5F} = {918131DF-9947-40C0-A702-A68E36FFBC5F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{918131DF-9947-40C0-A702-A68E36FFBC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{918131DF-9947-40C0-A702-A68E36FFBC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{918131DF-9947-40C0-A702-A68E36FFBC5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A32F24-B014-457A-954E-54D59865322F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A32F24-B014-457A-954E-54D59865322F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A32F24-B014-457A-954E-54D59865322F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A32F24-B014-457A-954E-54D59865322F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +53,7 @@ Global
 		{B9271C80-6806-4E27-B7EB-03528A62FE73} = {35F6E594-C7FD-49BB-BBA7-81A79945416C}
 		{E419BC82-BBCF-4CCD-B8D9-A4FDF91B268C} = {6F64696E-F8C3-4B37-A572-94A5FF1F0719}
 		{918131DF-9947-40C0-A702-A68E36FFBC5F} = {6F64696E-F8C3-4B37-A572-94A5FF1F0719}
+		{59A32F24-B014-457A-954E-54D59865322F} = {489EDD5C-E397-488C-B681-B56574B10ECA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4123F39C-9DE8-488B-A371-F9802D940F4E}
