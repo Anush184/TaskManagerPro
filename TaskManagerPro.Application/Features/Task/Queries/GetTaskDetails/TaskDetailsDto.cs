@@ -16,6 +16,6 @@ namespace TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails
         public DateTime CreatedAt { get; set; }
         public DateTime? ResolvedAt { get; set; }
         public int ProjectId { get; set; }
-        public Project Project { get; set; }  // Include a ProjectDto for more details
+        public Domain.Project Project { get; set; }  // Include a ProjectDto for more details
     }
 }

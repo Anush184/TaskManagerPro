@@ -22,7 +22,7 @@ namespace TaskManagerPro.Application.Features.Task.Commands.DeleteTask
         {
             var taskToDelete = await _taskRepository.GetByIdAsync(request.Id);
             if (taskToDelete == null)
-                throw new NotFoundException(nameof(Task), request.Id);
+                throw new NotFoundException(nameof(Domain.Task), request.Id);
 
             await _taskRepository.DeleteAsync(taskToDelete);
             return Unit.Value;

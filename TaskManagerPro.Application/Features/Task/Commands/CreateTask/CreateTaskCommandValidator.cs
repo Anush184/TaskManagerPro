@@ -16,17 +16,20 @@ namespace TaskManagerPro.Application.Features.Task.Commands.CreateTask
         {
             this._taskRepository = taskRepository;
             RuleFor(p => p.Description)
-                .NotEmpty().WithMessage("{PropertyDescription} is required")
+                .NotEmpty().WithMessage("{PropertyDescription} is required.")
                 .NotNull()
-                .MaximumLength(1000).WithMessage("{PropertyDescription} must be fewer than 1000 characters");
+                .MaximumLength(1000).WithMessage("{PropertyDescription} must be fewer than 1000 characters.");
 
             RuleFor(p => p.Status)
-                .NotEmpty().WithMessage("{PropertyStatus} is required")
+                .NotEmpty().WithMessage("{PropertyStatus} is required.")
                 .NotNull();
 
-            RuleFor(q => q)
+            RuleFor(p => p.ProjectId)
+                .NotNull();
+
+            RuleFor(p => p)
                 .MustAsync(TaskDescriptionUnique)
-                .WithMessage("Task description already exists");
+                .WithMessage("Task description already exists.");
          
         }
 

@@ -17,14 +17,14 @@ namespace TaskManagerPro.Persistence.Configurations
                 new Domain.Task()
                 {
                     Id = 1,
-                    Description = "Task1",
+                    Description = "Task",
                     Status = Domain.Common.Enums.TaskStatus.NotStarted,
                     ResolvedAt = null,
                     ProjectId = 1,
                     Project = new Domain.Project() 
                     {
                         Id = 1,
-                        Name = "Project1",
+                        Name = "Project",
                         Description = string.Empty,
                         CreatedAt = DateTime.Now,
                         UpdatedAt = null,
@@ -32,7 +32,7 @@ namespace TaskManagerPro.Persistence.Configurations
                         ManagerId = "1",
                         Manager = new Domain.User() 
                         {
-                            FirstName = "User1",
+                            FirstName = "User",
                             LastName = "User1yan",
                             Email = "user1@gmail.com",
                             PasswordHash = "user1!",
