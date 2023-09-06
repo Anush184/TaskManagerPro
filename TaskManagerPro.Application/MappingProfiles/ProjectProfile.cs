@@ -8,6 +8,7 @@ using TaskManagerPro.Application.Features.Project.Queries.GetAllProjects;
 using TaskManagerPro.Application.Features.Project.Queries.GetProjectDetails;
 using TaskManagerPro.Application.Features.Task.Queries.GetAllTasks;
 using TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails;
+using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Application.MappingProfiles
 {
@@ -15,8 +16,8 @@ namespace TaskManagerPro.Application.MappingProfiles
     {
         public ProjectProfile()
         {
-            CreateMap< ProjectDto, Domain.Project > ().ReverseMap();
-            CreateMap<Domain.Project, ProjectDetailsDto>().ReverseMap();
+            CreateMap< ProjectDto, Project > ().ReverseMap();
+            CreateMap<Project, ProjectDetailsDto>().ReverseMap();
         } 
     }
 }

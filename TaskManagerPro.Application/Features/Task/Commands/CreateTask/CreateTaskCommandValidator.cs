@@ -10,9 +10,9 @@ namespace TaskManagerPro.Application.Features.Task.Commands.CreateTask
 {
     public class CreateTaskCommandValidator: AbstractValidator<CreateTaskCommand>
     {
-        private readonly ITaskRepository _taskRepository;
+        private readonly IProjectTaskRepository _taskRepository;
 
-        public CreateTaskCommandValidator(ITaskRepository taskRepository)
+        public CreateTaskCommandValidator(IProjectTaskRepository taskRepository)
         {
             this._taskRepository = taskRepository;
             RuleFor(p => p.Description)

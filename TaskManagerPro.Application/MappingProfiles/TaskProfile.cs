@@ -13,8 +13,8 @@ namespace TaskManagerPro.Application.MappingProfiles
     {
         public TaskProfile()
         {
-            CreateMap<TaskDto, Domain.Task>().ReverseMap();
-            CreateMap<Domain.Task, TaskDetailsDto>().ReverseMap();
+            CreateMap<TaskDto, Domain.Entities.Task>().ReverseMap();
+            CreateMap<Domain.Entities.Task, TaskDetailsDto>().ReverseMap();
         }
     }
 }

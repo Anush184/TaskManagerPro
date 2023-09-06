@@ -21,7 +21,7 @@ public static class PersistenceServiceRegistration
             options.UseSqlServer(configuration.GetConnectionString("TMPDatabaseConnectingString"));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<IProjectTaskRepository, ProjectTaskRepository>();
 
 
 

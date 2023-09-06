@@ -9,9 +9,9 @@ using TaskManagerPro.Domain.Common;
 
 namespace TaskManagerPro.Persistence.Configurations
 {
-    public class TaskConfiguration : IEntityTypeConfiguration<Domain.Task>
+    public class TaskConfiguration : IEntityTypeConfiguration<Domain.Entities.Task>
     {
-        public void Configure(EntityTypeBuilder<Domain.Task> builder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.Task> builder)
         {
             builder.HasData(
                 new Domain.Task()

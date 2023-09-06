@@ -28,7 +28,7 @@ namespace TaskManagerPro.Application.Features.Project.Commands.CreateProject
             if (validatorResult.Errors.Any())
                throw new BadRequestException("Invalid Project", validatorResult);
 
-            var projectToCreate = _mapper.Map<Domain.Project>(request);
+            var projectToCreate = _mapper.Map<Domain.Entities.Project>(request);
 
             await _projectRepository.CreateAsync(projectToCreate);
             return projectToCreate.Id;

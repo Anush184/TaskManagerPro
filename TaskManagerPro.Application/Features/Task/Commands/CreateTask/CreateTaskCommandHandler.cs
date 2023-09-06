@@ -13,9 +13,9 @@ namespace TaskManagerPro.Application.Features.Task.Commands.CreateTask;
 public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, int>
 {
     private readonly IMapper _mapper;
-    private readonly ITaskRepository _taskRepository;
+    private readonly IProjectTaskRepository _taskRepository;
 
-    public CreateTaskCommandHandler(IMapper mapper, ITaskRepository taskRepository)
+    public CreateTaskCommandHandler(IMapper mapper, IProjectTaskRepository taskRepository)
     {
         this._mapper = mapper;
         this._taskRepository = taskRepository;
@@ -29,7 +29,7 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, int>
             throw new BadRequestException("Invalid Task", validatorResult);
 
         // Convert to domain entity object
-        var taskToCreate = _mapper.Map<Domain.Task>(request);
+        var taskToCreate = _mapper.Map<Domain.Entities.Task>(request);
 
         //add to database
         await _taskRepository.CreateAsync(taskToCreate);

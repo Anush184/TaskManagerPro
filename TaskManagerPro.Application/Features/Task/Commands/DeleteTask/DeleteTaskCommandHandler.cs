@@ -12,9 +12,9 @@ namespace TaskManagerPro.Application.Features.Task.Commands.DeleteTask
 {
     public class DeleteTaskCommandHandler : IRequestHandler<DeleteTaskCommand, Unit>
     {
-       private readonly ITaskRepository _taskRepository;
+       private readonly IProjectTaskRepository _taskRepository;
 
-        public DeleteTaskCommandHandler(ITaskRepository taskRepository)
+        public DeleteTaskCommandHandler(IProjectTaskRepository taskRepository)
         {
            this._taskRepository = taskRepository;
         }
@@ -22,7 +22,7 @@ namespace TaskManagerPro.Application.Features.Task.Commands.DeleteTask
         {
             var taskToDelete = await _taskRepository.GetByIdAsync(request.Id);
             if (taskToDelete == null)
-                throw new NotFoundException(nameof(Domain.Task), request.Id);
+                throw new NotFoundException(nameof(Domain.Entities.Task), request.Id);
 
             await _taskRepository.DeleteAsync(taskToDelete);
             return Unit.Value;

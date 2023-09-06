@@ -10,8 +10,7 @@ namespace TaskManagerPro.Domain.Common.Enums
     {
         NotStarted,
         InProgress,
-        Completed,
-        OnHold,
+        Resolved,
         Cancelled,
         Deferred
     }

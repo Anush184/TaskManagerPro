@@ -12,9 +12,9 @@ namespace TaskManagerPro.Application.Features.Task.Queries.GetAllTasks
     public class GetTasksQueryHandler : IRequestHandler<GetTasksQuery, List<TaskDto>>
     {
         private readonly IMapper _mapper;
-        private readonly ITaskRepository _taskRepository;
+        private readonly IProjectTaskRepository _taskRepository;
 
-        public GetTasksQueryHandler(IMapper mapper, ITaskRepository taskRepository)
+        public GetTasksQueryHandler(IMapper mapper, IProjectTaskRepository taskRepository)
         {
             this._mapper = mapper;
             this._taskRepository = taskRepository;

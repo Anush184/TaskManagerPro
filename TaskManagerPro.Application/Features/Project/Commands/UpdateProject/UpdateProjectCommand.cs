@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagerPro.Domain;
+using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Application.Features.Project.Commands.UpdateProject
 {
@@ -16,7 +16,7 @@ namespace TaskManagerPro.Application.Features.Project.Commands.UpdateProject
         public DateTime? EndDate { get; set; }
         public string ManagerId { get; set; }  // ID of the project manager (foreign key to User)
         public User Manager { get; set; }  // Navigation property to the project manager
-        public ICollection<Domain.Task>? Tasks { get; set; }  // Collection of tasks associated with the project
+        public ICollection<Domain.Entities.Task>? Tasks { get; set; }  // Collection of tasks associated with the project
 
     }
 }

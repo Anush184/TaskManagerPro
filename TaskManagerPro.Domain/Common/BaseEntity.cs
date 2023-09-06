@@ -16,7 +16,7 @@ namespace TaskManagerPro.Domain.Common
         // Constructor to initialize CreatedAt to the current date and time
         protected BaseEntity()
         {
-            CreatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
         }
     }
 }

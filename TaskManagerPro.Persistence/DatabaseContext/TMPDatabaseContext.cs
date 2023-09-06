@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagerPro.Domain;
 using TaskManagerPro.Domain.Common;
+using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Persistence.DatabaseContext
 {
@@ -15,8 +15,11 @@ namespace TaskManagerPro.Persistence.DatabaseContext
         {
                 
         }
-        public DbSet<Domain.Task> Tasks { get; set; }
+        public DbSet<ProjectTask> ProjectTasks { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

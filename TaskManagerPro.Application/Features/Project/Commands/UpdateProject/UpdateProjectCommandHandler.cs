@@ -21,7 +21,7 @@ namespace TaskManagerPro.Application.Features.Project.Commands.UpdateProject
         }
         public async Task<Unit> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-           var projectToUpdate = _mapper.Map<Domain.Project>(request);
+           var projectToUpdate = _mapper.Map<Domain.Entities.Project>(request);
             await _projectRepository.UpdateAsync(projectToUpdate);
             return Unit.Value;
         }

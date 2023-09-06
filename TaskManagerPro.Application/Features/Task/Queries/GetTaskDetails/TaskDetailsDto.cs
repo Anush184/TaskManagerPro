@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagerPro.Domain;
 using TaskStatus = TaskManagerPro.Domain.Common.Enums.TaskStatus;
 
 namespace TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails
@@ -16,6 +15,6 @@ namespace TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails
         public DateTime CreatedAt { get; set; }
         public DateTime? ResolvedAt { get; set; }
         public int ProjectId { get; set; }
-        public Domain.Project Project { get; set; }  // Include a ProjectDto for more details
+        public Domain.Entities.Project Project { get; set; }  // Include a ProjectDto for more details
     }
 }

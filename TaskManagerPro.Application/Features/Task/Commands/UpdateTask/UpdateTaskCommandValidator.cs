@@ -11,8 +11,8 @@ namespace TaskManagerPro.Application.Features.Task.Commands.UpdateTask
 {
     public class UpdateTaskCommandValidator: AbstractValidator<UpdateTaskCommand>
     {
-        private readonly ITaskRepository _taskRepository;
-        public UpdateTaskCommandValidator(ITaskRepository taskRepository)
+        private readonly IProjectTaskRepository _taskRepository;
+        public UpdateTaskCommandValidator(IProjectTaskRepository taskRepository)
         {
                 this._taskRepository = taskRepository;
 
