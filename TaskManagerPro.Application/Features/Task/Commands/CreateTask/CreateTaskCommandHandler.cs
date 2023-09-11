@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
 using TaskManagerPro.Application.Exceptions;
+using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Application.Features.Task.Commands.CreateTask;
 
@@ -22,19 +23,17 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, int>
     }
     public async Task<int> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
     {
-        // Validation incoming data
+        
         var validator = new CreateTaskCommandValidator(_taskRepository);
         var validatorResult = await validator.ValidateAsync(request);
         if (validatorResult.Errors.Any())
             throw new BadRequestException("Invalid Task", validatorResult);
 
-        // Convert to domain entity object
-        var taskToCreate = _mapper.Map<Domain.Entities.Task>(request);
+        
+        var taskToCreate = _mapper.Map<ProjectTask>(request);
 
-        //add to database
         await _taskRepository.CreateAsync(taskToCreate);
 
-        // return record id
         return taskToCreate.Id;
     }
 }

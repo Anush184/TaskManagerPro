@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TaskManagerPro.Domain.Common.Enums;
 using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Application.Contracts.Persistence
@@ -10,10 +11,13 @@ namespace TaskManagerPro.Application.Contracts.Persistence
     {
         Task<ProjectTask> GetTaskWithDetails(int id);
         Task<IReadOnlyList<ProjectTask>> GetTasksWithDetailsByProject(int projectid);
+        Task<IReadOnlyList<ProjectTask>> GetTasksWithDetailsByTeam(int teamId);
         Task<IReadOnlyList<ProjectTask>> GetTasksWithDetailsByUser(int userId);
         Task<IReadOnlyList<ProjectTask>> GetTasksWithDetails();
-        Task<IReadOnlyList<ProjectTask>> GetTasksByProjectAndUser(int projectId, int userId);
-        Task<IReadOnlyList<ProjectTask>> GetTasksByTeamMemberAndStatus(int userId, string status);
+        Task<IReadOnlyList<ProjectTask>> GetTasksByProjectAndTeamAndUser(int projectId, int teamId, int userId);
+        Task<IReadOnlyList<ProjectTask>> GetTasksByTeam(int teamId, StatusOfTask status);
+        Task<IReadOnlyList<ProjectTask>> GetTasksByTeamMemberAndStatus(int userId, StatusOfTask status);
         Task<bool> IsTaskTitleUnique(string description);
+        Task AddTasks(List<ProjectTask> projectTasks);
     }
 }

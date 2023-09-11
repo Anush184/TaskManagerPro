@@ -9,11 +9,11 @@ namespace TaskManagerPro.Domain.Entities
 {
     public class Comment: BaseEntity
     {
-        public string Text { get; set; } 
+        public string Text { get; set; } = string.Empty;
         public int UserId { get; set; } 
-        public User User { get; set; } 
+        public User User { get; set; } =new User();
         public int TaskId { get; set; } 
-        public ProjectTask Task { get; set; } 
+        public ProjectTask Task { get; set; } = new ProjectTask();  
        
     }
 

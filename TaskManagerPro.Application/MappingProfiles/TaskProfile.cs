@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Features.Task.Queries.GetAllTasks;
 using TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails;
+using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.MappingProfiles
+namespace TaskManagerPro.Application.MappingProfiles;
+
+public class TaskProfile : Profile
 {
-    public class TaskProfile : Profile
+    public TaskProfile()
     {
-        public TaskProfile()
-        {
-            CreateMap<TaskDto, Domain.Entities.Task>().ReverseMap();
-            CreateMap<Domain.Entities.Task, TaskDetailsDto>().ReverseMap();
-        }
+        CreateMap<TaskDto, ProjectTask>().ReverseMap();
+        CreateMap<ProjectTask, TaskDetailsDto>().ReverseMap();
     }
 }

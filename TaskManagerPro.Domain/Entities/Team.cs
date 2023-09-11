@@ -10,7 +10,7 @@ namespace TaskManagerPro.Domain.Entities
     public class Team: BaseEntity
     {
         public string Name { get; set; } = string.Empty;
-        public ICollection<User>? Members { get; set; }
+        public ICollection<User> Members { get; set; }
         public ICollection<Project>? Projects { get; set; }
     }
 }

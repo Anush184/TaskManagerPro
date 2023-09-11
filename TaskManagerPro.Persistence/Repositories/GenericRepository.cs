@@ -26,10 +26,11 @@ namespace TaskManagerPro.Persistence.Repositories
             
         }
 
-        public async Task DeleteAsync(T entity)
+        public Task DeleteAsync(T entity)
         {
             _context.Remove(entity);
             _context.SaveChanges();
+            return Task.CompletedTask;
         }
 
         public async Task<IReadOnlyList<T>> GetAsync()

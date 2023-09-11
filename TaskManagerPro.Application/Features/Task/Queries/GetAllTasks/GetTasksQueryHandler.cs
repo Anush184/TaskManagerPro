@@ -21,11 +21,8 @@ namespace TaskManagerPro.Application.Features.Task.Queries.GetAllTasks
         }
         public async Task<List<TaskDto>> Handle(GetTasksQuery request, CancellationToken cancellationToken)
         {
-            // Query the database
             var tasks = await _taskRepository.GetAsync();
-            //Convert data objects to DTO objects
             var data = _mapper.Map<List<TaskDto>>(tasks);
-            //return list of DTO object
             return data;
         }
     }

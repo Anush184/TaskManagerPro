@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
-using TaskManagerPro.Application.Features.Task.Commands.CreateTask;
 
-namespace TaskManagerPro.Application.Features.Project.Commands.CreateProject
+
+namespace TaskManagerPro.Application.Features.Layout.Commands.CreateProject
 {
     public class CreateProjectCommandValidator: AbstractValidator<CreateProjectCommand>
     {
@@ -29,16 +29,14 @@ namespace TaskManagerPro.Application.Features.Project.Commands.CreateProject
                 .WithMessage("{PropertyDescription} must be fewer than 2000 characters.");
             RuleFor(p => p.ManagerId)
                 .NotEmpty();
-            RuleFor(p => p.EndDate)
-                .GreaterThanOrEqualTo(p => p.CreatedAt);
-
+           
             RuleFor(p => p)
-                .MustAsync(ProjectDescriptionUnique)
-                .WithMessage("Project description already exists.");
+                .MustAsync(ProjectNameUnique)
+                .WithMessage("Project name already exists.");
         }
-        private Task<bool> ProjectDescriptionUnique(CreateProjectCommand command, CancellationToken token)
+        private Task<bool> ProjectNameUnique(CreateProjectCommand command, CancellationToken token)
         {
-            return _projectRepository.IsProjectDescriptionUnique(command.Description);
+            return _projectRepository.IsProjectNameUnique(command.Name);
         }
 
 

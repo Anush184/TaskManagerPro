@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
+using TaskManagerPro.Application.Exceptions;
 using TaskManagerPro.Domain.Entities;
 using TaskManagerPro.Persistence.DatabaseContext;
 
@@ -16,49 +18,77 @@ namespace TaskManagerPro.Persistence.Repositories
         {
         }
 
-        public Task<IReadOnlyList<Project>> GetClosedProjectsByTeamMember(int userId)
+        public async Task AddProjects(List<ProjectTask> projects)
         {
-            throw new NotImplementedException();
+            await _context.AddRangeAsync(projects);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Project> GetOpenProjectsByTeamMember(int userId)
+
+        public async Task<IReadOnlyList<Project>> GetClosedProjectsByTeam(int teamId)
         {
-            throw new NotImplementedException();
+            return await _context.Projects
+                .Where(q => q.IsClosed == true && q.TeamId == teamId)
+                .Include(q => q.Team)
+                .ToListAsync();
         }
 
-        public Task<IReadOnlyList<Project>> GetProjectsByManager(int managerId)
+        public async Task<IReadOnlyList<Project>> GetOpenProjectsByTeam(int teamId)
         {
-            throw new NotImplementedException();
+            return await _context.Projects
+                .Where(q => q.IsClosed == false && q.TeamId == teamId)
+                .Include(q => q.Team)
+                .ToListAsync();
         }
 
-        public Task<IReadOnlyList<Project>> GetProjectsWithDetails()
+        public async Task<IReadOnlyList<Project>> GetProjectsByManager(int managerId)
         {
-            throw new NotImplementedException();
+            return await _context.Projects
+                .Where(q => q.ManagerId == managerId)
+                .Include(q => q.Manager)
+                .ToListAsync();
         }
 
-        public Task<Project> GetProjectWithDetails(int id)
+        public async Task<IReadOnlyList<Project>> GetProjectsWithDetails()
         {
-            throw new NotImplementedException();
+            return await _context.Projects
+                .Include(q => q.Manager)
+                .Include(q => q.Team)
+                .Include(q => q.Tasks)
+                .ToListAsync();
         }
 
-        public Task<IReadOnlyList<Project>> GetRecentProjects(int count)
+        public async Task<Project> GetProjectWithDetails(int id)
         {
-            throw new NotImplementedException();
+            var project = await _context.Projects
+                    .Include(q => q.Manager)
+                    .Include(q => q.Team)
+                    .Include(q => q.Tasks)
+                    .FirstOrDefaultAsync(q => q.Id == id);
+            return project;
+
         }
 
-        public async Task<bool> IsProjectDescriptionUnique(string description)
+        public async Task<IReadOnlyList<Project>> GetRecentProjects(int count)
         {
-            return await _context.Projects.AnyAsync(q => q.Description == description);
+            var recentProjects = await _context.Projects
+                    .Where(q => !q.IsClosed)
+                    .OrderByDescending(q => q.CreatedAt)
+                    .Take(count)
+                    .ToListAsync();
+
+                return recentProjects;
+        }
+               
+        public async Task<bool> IsProjectNameUnique(string name)
+        {
+            return await _context.Projects.AnyAsync(q => q.Name == name);
         }
 
-        public Task<bool> IsProjectNameUnique(string description)
+        public async Task<bool> ProjectExist(int managerId, string name)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> ProjectExist(int managerId, string name)
-        {
-            throw new NotImplementedException();
+            return await _context.Projects
+                .AnyAsync(q => q.ManagerId == managerId && q.Name == name);
         }
     }
 }

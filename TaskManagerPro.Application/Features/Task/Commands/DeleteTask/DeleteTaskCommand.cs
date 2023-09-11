@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagerPro.Application.Features.Task.Commands.DeleteTask
+namespace TaskManagerPro.Application.Features.Task.Commands.DeleteTask;
+
+public class DeleteTaskCommand: IRequest<Unit>
 {
-    public class DeleteTaskCommand: IRequest<Unit>
-    {
-        public int Id { get; set; } 
-    }
+    public int Id { get; set; } 
 }

@@ -6,45 +6,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Domain.Common;
+using TaskManagerPro.Domain.Common.Enums;
+using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Persistence.Configurations
 {
-    public class TaskConfiguration : IEntityTypeConfiguration<Domain.Entities.Task>
+    public class TaskConfiguration : IEntityTypeConfiguration<ProjectTask>
     {
-        public void Configure(EntityTypeBuilder<Domain.Entities.Task> builder)
+        public void Configure(EntityTypeBuilder<ProjectTask> builder)
         {
             builder.HasData(
-                new Domain.Task()
+                new ProjectTask()
                 {
                     Id = 1,
                     Description = "Task",
-                    Status = Domain.Common.Enums.TaskStatus.NotStarted,
+                    Status = StatusOfTask.NotStarted,
                     ResolvedAt = null,
                     ProjectId = 1,
-                    Project = new Domain.Project() 
+                    Project = new Project() 
                     {
                         Id = 1,
                         Name = "Project",
                         Description = string.Empty,
                         CreatedAt = DateTime.Now,
                         UpdatedAt = null,
-                        EndDate = null,
-                        ManagerId = "1",
-                        Manager = new Domain.User() 
+                        IsClosed = false,
+                        ManagerId = 1,
+                        Manager = new User() 
                         {
+                            Username = "UserName",
                             FirstName = "User",
                             LastName = "User1yan",
                             Email = "user1@gmail.com",
+                            Phone = "094386742",
                             PasswordHash = "user1!",
-                            DateOfBirth = DateTime.Now,
-                            IsLocked = false,
-                            IsDeleted = false,
+                            
                         },
                         Tasks = null
 
                     },
-                    AssignedToUserId = string.Empty,
-                    AssignedToUser = null,
+                    AssignedToId = 1,
+                    AssignedTo = new User(),
                     Comments = null
                 }
                 );

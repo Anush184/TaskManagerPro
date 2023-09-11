@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
 using TaskManagerPro.Application.Exceptions;
-using TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails;
+using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.Features.Project.Queries.GetProjectDetails;
+namespace TaskManagerPro.Application.Features.Layout.Queries.GetProjectDetails;
 
 public class GetProjectDetailsQueryHandler : IRequestHandler<GetProjectDetailsQuery, ProjectDetailsDto>
 {
@@ -24,7 +24,7 @@ public class GetProjectDetailsQueryHandler : IRequestHandler<GetProjectDetailsQu
 
     public async Task<ProjectDetailsDto> Handle(GetProjectDetailsQuery request, CancellationToken cancellationToken)
     {
-        var project = await _projectRepository.GetByIdAsync(request.Id) ?? throw new NotFoundException(nameof(Domain.Entities.Project), request.Id);
+        var project = await _projectRepository.GetByIdAsync(request.Id) ?? throw new NotFoundException(nameof(Project), request.Id);
         var data = _mapper.Map<ProjectDetailsDto>(project);
         return data;
     }
