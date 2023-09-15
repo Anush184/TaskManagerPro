@@ -6,14 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.Features.Layout.Commands.CreateProject;
+namespace TaskManagerPro.Application.Features.CustomProject.Commands.UpdateProject;
 
-public class CreateProjectCommand: IRequest<int>
+public class UpdateProjectCommand: IRequest<Unit>
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public string ManagerId { get; set; }  
-    
-
+    public int ManagerId { get; set; }
+    public int TeamId { get; set; }
 
 }

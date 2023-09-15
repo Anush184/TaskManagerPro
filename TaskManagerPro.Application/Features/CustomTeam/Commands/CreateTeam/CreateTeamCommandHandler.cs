@@ -36,7 +36,7 @@ public class CreateTeamCommandHandler : IRequestHandler<CreateTeamCommand, int>
         var members = await _userRepository.GetUsersByIdsAsync(request.MemberIds);
         if (members == null || members.Count != request.MemberIds.Count)
         {
-            throw new BadRequestException("Invalid Team Member Id's");
+            throw new BadRequestException("Invalid Team Member Ids");
         }
 
         foreach (var member in members)

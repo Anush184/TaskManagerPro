@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagerPro.Application.Features.Layout.Queries.GetAllProjects;
+namespace TaskManagerPro.Application.Features.CustomTeam.Queries.GetAllQueries;
 
-public class ProjectDto
+public class TeamDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string ManagerId { get; set; }
-    public DateTime? CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
     public bool IsClosed { get; set; }
 }

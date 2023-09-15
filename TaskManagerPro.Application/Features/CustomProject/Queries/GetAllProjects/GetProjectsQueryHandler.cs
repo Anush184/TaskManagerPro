@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
 
 
-namespace TaskManagerPro.Application.Features.Layout.Queries.GetAllProjects;
+namespace TaskManagerPro.Application.Features.CustomProject.Queries.GetAllProjects;
 
 public class GetProjectsQueryHandler : IRequestHandler<GetProjectsQuery, List<ProjectDto>>
 {

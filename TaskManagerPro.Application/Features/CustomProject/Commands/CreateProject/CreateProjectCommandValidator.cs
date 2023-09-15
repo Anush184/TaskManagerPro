@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
 
 
-namespace TaskManagerPro.Application.Features.Layout.Commands.CreateProject
+namespace TaskManagerPro.Application.Features.CustomProject.Commands.CreateProject
 {
     public class CreateProjectCommandValidator: AbstractValidator<CreateProjectCommand>
     {

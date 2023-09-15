@@ -6,6 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace TaskManagerPro.Application.Features.Layout.Queries.GetProjectDetails;
+namespace TaskManagerPro.Application.Features.CustomProject.Queries.GetProjectDetails;
 
 public record GetProjectDetailsQuery(int Id) : IRequest<ProjectDetailsDto>;

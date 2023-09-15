@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Domain;
 
-namespace TaskManagerPro.Application.Features.Layout.Queries.GetProjectDetails;
+namespace TaskManagerPro.Application.Features.CustomProject.Queries.GetProjectDetails;
 
 public class ProjectDetailsDto
 {

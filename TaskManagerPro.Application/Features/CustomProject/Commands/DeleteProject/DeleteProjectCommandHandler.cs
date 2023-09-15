@@ -8,7 +8,7 @@ using TaskManagerPro.Application.Contracts.Persistence;
 using TaskManagerPro.Application.Exceptions;
 using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.Features.Layout.Commands.DeleteProject
+namespace TaskManagerPro.Application.Features.CustomProject.Commands.DeleteProject
 {
     public class DeleteProjectCommandHandler: IRequestHandler<DeleteProjectCommand, Unit>
     {
