@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagerPro.Application.Features.Layout.Commands.DeleteProject
+namespace TaskManagerPro.Application.Features.CustomPrject.Commands.DeleteProject
 {
     public class DeleteProjectCommand : IRequest<Unit>
     {

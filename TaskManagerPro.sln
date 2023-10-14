@@ -19,10 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerPro.Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A3FBFDD1-7F93-4824-A47F-14427EE14FCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Persistence", "TaskManagerPro.Persistence\TaskManagerPro.Persistence.csproj", "{59A32F24-B014-457A-954E-54D59865322F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerPro.Persistence", "TaskManagerPro.Persistence\TaskManagerPro.Persistence.csproj", "{59A32F24-B014-457A-954E-54D59865322F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{918131DF-9947-40C0-A702-A68E36FFBC5F} = {918131DF-9947-40C0-A702-A68E36FFBC5F}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Infrastructure", "TaskManagerPro.Infrastructure\TaskManagerPro.Infrastructure.csproj", "{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{59A32F24-B014-457A-954E-54D59865322F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59A32F24-B014-457A-954E-54D59865322F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59A32F24-B014-457A-954E-54D59865322F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{E419BC82-BBCF-4CCD-B8D9-A4FDF91B268C} = {6F64696E-F8C3-4B37-A572-94A5FF1F0719}
 		{918131DF-9947-40C0-A702-A68E36FFBC5F} = {6F64696E-F8C3-4B37-A572-94A5FF1F0719}
 		{59A32F24-B014-457A-954E-54D59865322F} = {489EDD5C-E397-488C-B681-B56574B10ECA}
+		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337} = {489EDD5C-E397-488C-B681-B56574B10ECA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4123F39C-9DE8-488B-A371-F9802D940F4E}

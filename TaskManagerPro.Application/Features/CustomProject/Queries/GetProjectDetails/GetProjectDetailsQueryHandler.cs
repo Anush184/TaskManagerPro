@@ -9,7 +9,7 @@ using TaskManagerPro.Application.Contracts.Persistence;
 using TaskManagerPro.Application.Exceptions;
 using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.Features.Layout.Queries.GetProjectDetails;
+namespace TaskManagerPro.Application.Features.CustomProject.Queries.GetProjectDetails;
 
 public class GetProjectDetailsQueryHandler : IRequestHandler<GetProjectDetailsQuery, ProjectDetailsDto>
 {

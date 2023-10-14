@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManagerPro.Application.Features.Layout.Queries.GetAllProjects;
-using TaskManagerPro.Application.Features.Layout.Queries.GetProjectDetails;
+using TaskManagerPro.Application.Features.CustomProject.Queries.GetAllProjects;
+using TaskManagerPro.Application.Features.CustomProject.Queries.GetProjectDetails;
 using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Application.MappingProfiles;
