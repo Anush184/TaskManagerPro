@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
 
-namespace TaskManagerPro.Application.Features.CustomPrject.Commands.UpdateProject;
+namespace TaskManagerPro.Application.Features.CustomProject.Commands.UpdateProject;
 
 internal class UpdateProjectCommandHandler : IRequestHandler<UpdateProjectCommand, Unit>
 {

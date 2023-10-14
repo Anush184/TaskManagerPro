@@ -7,7 +7,9 @@ using TaskManagerPro.Domain.Entities;
 
 namespace TaskManagerPro.Application.Contracts.Persistence;
 
-public interface IUserRepository: IGenericRepository<User>
-{
-    Task<IReadOnlyList<User>> GetUsersByIdsAsync(ICollection<int> memberIds);
-}
+
+    public interface IUserRepository : IGenericRepository<User>
+    {
+        Task<List<User>> GetUsersByIdsAsync(ICollection<int> memberIds);
+    }
+

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.Features.CustomPrject.Commands.UpdateProject;
+namespace TaskManagerPro.Application.Features.CustomProject.Commands.UpdateProject;
 
 public class UpdateProjectCommand: IRequest<Unit>
 {
