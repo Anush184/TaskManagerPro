@@ -29,7 +29,11 @@ public class UpdateTaskCommandValidator: AbstractValidator<UpdateTaskCommand>
             .WithMessage("Task description already exists");
 
     }
-
+    private async Task<bool> TaskMustExist(int taskId, CancellationToken arg2)
+    {
+        var task = await _taskRepository.GetByIdAsync(taskId);
+        return (task != null);
+    }
     private Task<bool> TaskDescriptionUnique(UpdateTaskCommand command, CancellationToken token)
     {
         return _taskRepository.IsTaskTitleUnique(command.Title);

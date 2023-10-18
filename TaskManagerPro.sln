@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerPro.Persistence"
 		{918131DF-9947-40C0-A702-A68E36FFBC5F} = {918131DF-9947-40C0-A702-A68E36FFBC5F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Infrastructure", "TaskManagerPro.Infrastructure\TaskManagerPro.Infrastructure.csproj", "{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerPro.Infrastructure", "TaskManagerPro.Infrastructure\TaskManagerPro.Infrastructure.csproj", "{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerPro.Api", "TaskManagerPro.Api\TaskManagerPro.Api.csproj", "{0B0E2F71-2ECA-4B23-B3CE-80005A4C6B87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0E2F71-2ECA-4B23-B3CE-80005A4C6B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0E2F71-2ECA-4B23-B3CE-80005A4C6B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0E2F71-2ECA-4B23-B3CE-80005A4C6B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0E2F71-2ECA-4B23-B3CE-80005A4C6B87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{918131DF-9947-40C0-A702-A68E36FFBC5F} = {6F64696E-F8C3-4B37-A572-94A5FF1F0719}
 		{59A32F24-B014-457A-954E-54D59865322F} = {489EDD5C-E397-488C-B681-B56574B10ECA}
 		{2CEC217A-E406-4C7B-AA9E-45E3C54C4337} = {489EDD5C-E397-488C-B681-B56574B10ECA}
+		{0B0E2F71-2ECA-4B23-B3CE-80005A4C6B87} = {3882E4BF-C51E-436D-B6E1-BA611395C792}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4123F39C-9DE8-488B-A371-F9802D940F4E}

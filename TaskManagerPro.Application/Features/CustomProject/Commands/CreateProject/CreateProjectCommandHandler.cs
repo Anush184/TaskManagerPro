@@ -9,7 +9,7 @@ using TaskManagerPro.Application.Contracts.Persistence;
 using TaskManagerPro.Application.Exceptions;
 using TaskManagerPro.Domain.Entities;
 
-namespace TaskManagerPro.Application.Features.CustomPrject.Commands.CreateProject;
+namespace TaskManagerPro.Application.Features.CustomProject.Commands.CreateProject;
 
 public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand,int>
 {
