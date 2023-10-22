@@ -21,32 +21,26 @@ namespace TaskManagerPro.Persistence.Configurations
                     Id = 1,
                     Description = "Task",
                     Status = StatusOfTask.NotStarted,
-                    ResolvedAt = null,
                     ProjectId = 1,
                     Project = new Project() 
                     {
                         Id = 1,
                         Name = "Project",
-                        Description = string.Empty,
                         CreatedAt = DateTime.Now,
                         UpdatedAt = null,
                         IsClosed = false,
                         ManagerId = 1,
                         Manager = new User() 
                         {
-                            Username = "UserName",
-                            FirstName = "User",
-                            LastName = "User1yan",
+                            UserName = "UserName",
                             Email = "user1@gmail.com",
                             Phone = "094386742",
-                            PasswordHash = "user1!",
-                            
                         },
                         Tasks = null
 
                     },
-                    AssignedToId = 1,
-                    AssignedTo = new User(),
+                    AssigneeId = 1,
+                    Assignee = new User(),
                     Comments = null
                 }
                 );

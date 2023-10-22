@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerPro.Application.Contracts.Persistence;
 using TaskManagerPro.Domain.Common;
+using TaskManagerPro.Domain.Entities;
 using TaskManagerPro.Persistence.DatabaseContext;
 
 namespace TaskManagerPro.Persistence.Repositories
@@ -48,6 +49,12 @@ namespace TaskManagerPro.Persistence.Repositories
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();  
+        }
+
+        public async Task AddEntities(List<T> entities)
+        {
+            await _context.AddRangeAsync(entities);
+            await _context.SaveChangesAsync();
         }
     }
 }

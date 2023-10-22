@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagerPro.Application.Features.CustomTeam.Commands.UpdateTeam;
-
-public class UpdateTeamCommand
+namespace TaskManagerPro.Application.MappingProfiles
 {
+    internal class CommentProfile
+    {
+    }
 }

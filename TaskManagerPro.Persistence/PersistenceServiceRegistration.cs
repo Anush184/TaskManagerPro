@@ -17,14 +17,14 @@ public static class PersistenceServiceRegistration
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
         IConfiguration configuration) 
     {
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IProjectTaskRepository, ProjectTaskRepository>();
+        services.AddScoped<IProjectRepository, ProjectRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
+
         services.AddDbContext<TMPDatabaseContext>(options => {
             options.UseSqlServer(configuration.GetConnectionString("TMPDatabaseConnectingString"));
-
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IProjectTaskRepository, ProjectTaskRepository>();
-            services.AddScoped<IProjectRepository, ProjectRepository>();
-            services.AddScoped<ITeamRepository, TeamRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
 
 
 

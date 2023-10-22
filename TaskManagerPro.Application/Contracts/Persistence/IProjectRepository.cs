@@ -9,15 +9,11 @@ namespace TaskManagerPro.Application.Contracts.Persistence
 {
     public interface IProjectRepository: IGenericRepository<Project>
     {
-        Task AddProjects(List<ProjectTask> projects);
-        Task<IReadOnlyList<Project>> GetProjectsWithDetails();
-        Task<Project> GetProjectWithDetails(int id);
-        Task<IReadOnlyList<Project>> GetProjectsByManager(int managerId);
-        Task<IReadOnlyList<Project>> GetOpenProjectsByTeam(int teamId);
-        Task<IReadOnlyList<Project>> GetClosedProjectsByTeam(int teamId);
-        Task<bool> ProjectExist(int managerId, string name);
-        Task<bool> IsProjectNameUnique(string name);
-        Task<IReadOnlyList<Project>> GetRecentProjects(int count);
-        
+        Task<IReadOnlyList<Project>> GetAllProjects();
+        Task<IReadOnlyList<Project>> GetProjectsByManagerAsync(int managerId);
+        Task<IReadOnlyList<Project>> GetOpenProjectsAsync();
+        Task<int> GetOpenProjectCountAsync();
+        Task<IReadOnlyList<ProjectTask>> GetProjectTasks(int projectId);
+
     }
 }

@@ -18,77 +18,54 @@ namespace TaskManagerPro.Persistence.Repositories
         {
         }
 
-        public async Task AddProjects(List<ProjectTask> projects)
-        {
-            await _context.AddRangeAsync(projects);
-            await _context.SaveChangesAsync();
-        }
-
-
-        public async Task<IReadOnlyList<Project>> GetClosedProjectsByTeam(int teamId)
+        public async Task<IReadOnlyList<Project>> GetProjectsByManagerAsync(int managerId)
         {
             return await _context.Projects
-                .Where(q => q.IsClosed == true && q.TeamId == teamId)
-                .Include(q => q.Team)
-                .ToListAsync();
-        }
-
-        public async Task<IReadOnlyList<Project>> GetOpenProjectsByTeam(int teamId)
-        {
-            return await _context.Projects
-                .Where(q => q.IsClosed == false && q.TeamId == teamId)
-                .Include(q => q.Team)
-                .ToListAsync();
-        }
-
-        public async Task<IReadOnlyList<Project>> GetProjectsByManager(int managerId)
-        {
-            return await _context.Projects
-                .Where(q => q.ManagerId == managerId)
+                .Where(p => p.ManagerId == managerId)
                 .Include(q => q.Manager)
+                .AsNoTracking()
                 .ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Project>> GetProjectsWithDetails()
+        public async Task<IReadOnlyList<Project>> GetOpenProjectsAsync()
         {
             return await _context.Projects
-                .Include(q => q.Manager)
-                .Include(q => q.Team)
-                .Include(q => q.Tasks)
+                .Where(p => !p.IsClosed)
+                .AsNoTracking()
                 .ToListAsync();
         }
 
-        public async Task<Project> GetProjectWithDetails(int id)
+
+        public async Task<Project> GetProjectDetails(int projectId)
         {
             var project = await _context.Projects
                     .Include(q => q.Manager)
-                    .Include(q => q.Team)
                     .Include(q => q.Tasks)
-                    .FirstOrDefaultAsync(q => q.Id == id);
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(q => q.Id == projectId);
             return project;
 
         }
-
-        public async Task<IReadOnlyList<Project>> GetRecentProjects(int count)
-        {
-            var recentProjects = await _context.Projects
-                    .Where(q => !q.IsClosed)
-                    .OrderByDescending(q => q.CreatedAt)
-                    .Take(count)
-                    .ToListAsync();
-
-                return recentProjects;
-        }
-               
-        public async Task<bool> IsProjectNameUnique(string name)
-        {
-            return await _context.Projects.AnyAsync(q => q.Name == name);
-        }
-
-        public async Task<bool> ProjectExist(int managerId, string name)
+        public async Task<int> GetOpenProjectCountAsync()
         {
             return await _context.Projects
-                .AnyAsync(q => q.ManagerId == managerId && q.Name == name);
+                .CountAsync(p => !p.IsClosed);
+        }
+
+
+        public async Task<IReadOnlyList<Project>> GetAllProjects()
+        {
+            var projects = await _context.Projects.ToListAsync();
+            return projects;
+        }
+
+        public async Task<IReadOnlyList<ProjectTask>> GetProjectTasks(int projectId)
+        {
+            var project = await _context.Projects
+                .FirstOrDefaultAsync(q => q.Id == projectId);
+            if (project != null)
+                return project.Tasks.ToList();
+            return null;
         }
     }
 }

@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagerPro.Application.Features.CustomTeam.Commands.DeleteTeam;
-
-public class DeleteTeamCommandHandler
+namespace TaskManagerPro.Domain.Common.Enums
 {
+    public enum Role
+    {
+        Manager,
+        TeamMember
+    }
 }

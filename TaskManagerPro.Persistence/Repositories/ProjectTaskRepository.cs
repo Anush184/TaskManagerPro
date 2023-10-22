@@ -17,100 +17,42 @@ namespace TaskManagerPro.Persistence.Repositories
         {
         }
 
-        public async Task AddTasks(List<ProjectTask> projectTasks)
+        public async Task<IReadOnlyList<ProjectTask>> GetOpenTasksAsync()
         {
-            await _context.AddRangeAsync(projectTasks);
-            await _context.SaveChangesAsync();  
-        }
-
-        public async Task<IReadOnlyList<ProjectTask>> GetTasksWithDetailsByProject(int projectId)
-        {
-            var tasks = await _context.ProjectTasks
-                .Where(q => q.ProjectId == projectId)
-                .Include(q => q.Project)
-                .Include(q => q.Team)
-                .Include(q => q.AssignedTo)
+            return await _context.ProjectTasks
+                .Where(t => t.Status == StatusOfTask.InProgress)
+                .AsNoTracking()
                 .ToListAsync();
-            return tasks;
-
         }
-       public async Task<IReadOnlyList<ProjectTask>> GetTasksWithDetailsByTeam(int teamId)
+
+
+        public async Task<ProjectTask> GetTaskByIdWithCommentsAsync(int taskId)
         {
-            var tasks = await _context.ProjectTasks
-                .Where(q => q.TeamId == teamId)
-                .Include (q => q.Team)   
-                .Include(q => q.Project)
-                .Include(q => q.AssignedTo)
+            var task =  await _context.ProjectTasks
+                .Include(t => t.Comments)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.Id == taskId);
+            if (task != null)
+                return task;
+            return new ProjectTask();
+        }
+
+        public async Task<IReadOnlyList<ProjectTask>> GetTasksByAssigneeAsync(int assigneeId)
+        {
+            return await _context.ProjectTasks
+                .Where(t => t.AssigneeId == assigneeId)
+                .AsNoTracking()
                 .ToListAsync();
-            return tasks;
         }
 
-        public async Task<IReadOnlyList<ProjectTask>> GetTasksWithDetailsByUser(int userId)
+
+        public async Task<IReadOnlyList<ProjectTask>> GetTasksByProjectAsync(int projectId)
         {
-            var tasks = await _context.ProjectTasks
-                .Where(q => q.AssignedToId == userId)
-                .Include(q => q.AssignedTo)
-                .Include(q => q.Team)
-                .Include(q => q.Project)
+            return await _context.ProjectTasks
+                .Where(t => t.ProjectId == projectId)
+                .AsNoTracking()
                 .ToListAsync();
-            return tasks;
         }
 
-        public async Task<IReadOnlyList<ProjectTask>> GetTasksWithDetails()
-        {
-            var tasks =  await _context.ProjectTasks
-                .Include(q => q.Project)
-                .Include(q => q.Team)
-                .Include(q => q.AssignedTo)
-                .ToListAsync();
-            return tasks;
-        }
-
-        public async Task<ProjectTask> GetTaskWithDetails(int id)
-        {
-            var task = await _context.ProjectTasks
-                .Include (q => q.Project)
-                .Include(q => q.AssignedTo)
-                .FirstOrDefaultAsync(q => q.Id == id);
-            return task;
-
-        }
-        public async Task<IReadOnlyList<ProjectTask>> GetTasksByProjectAndTeamAndUser(int projectId, int teamId, int userId)
-        {
-            var tasks = await _context.ProjectTasks
-                .Where(q => q.ProjectId == projectId && q.AssignedToId == userId && q.TeamId == teamId)
-                .Include(q => q.Project)
-                .Include(q => q.Team)
-                .Include(q => q.AssignedTo)
-                .ToListAsync();
-            return tasks;
-        }
-
-        public async Task<IReadOnlyList<ProjectTask>> GetTasksByTeamMemberAndStatus(int userId, StatusOfTask status)
-        {
-            var tasks = await _context.ProjectTasks
-                .Where(q => q.AssignedToId == userId && q.Status == status)
-                .Include(q => q.Project)
-                .Include(q => q.Team)
-                .Include(q => q.AssignedTo)
-                .ToListAsync();
-            return tasks;
-
-        }
-        public async Task<IReadOnlyList<ProjectTask>> GetTasksByTeam(int teamId, StatusOfTask status)
-        {
-            var tasks = await _context.ProjectTasks
-                .Where(q => q.TeamId == teamId && q.Status == status)
-                .Include(q => q.Project)
-                .Include(q => q.Team)
-                .Include(q => q.AssignedTo)
-                .ToListAsync();
-            return tasks;
-
-        }
-        public async Task<bool> IsTaskTitleUnique(string title)
-        {
-            return await _context.ProjectTasks.AnyAsync(q => q.Title == title);
-        }
     }
 }

@@ -9,4 +9,7 @@ namespace TaskManagerPro.Application.Contracts.Persistence;
 
 public interface ICommentRepository: IGenericRepository<Comment>
 {
+    Task<IReadOnlyList<Comment>> GetCommentsByTaskIdAsync(int taskId);
+    Task<IReadOnlyList<Comment>> GetCommentsByUserIdAsync(int userId);
 }
+
