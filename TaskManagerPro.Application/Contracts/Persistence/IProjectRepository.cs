@@ -14,6 +14,7 @@ namespace TaskManagerPro.Application.Contracts.Persistence
         Task<IReadOnlyList<Project>> GetOpenProjectsAsync();
         Task<int> GetOpenProjectCountAsync();
         Task<IReadOnlyList<ProjectTask>> GetProjectTasks(int projectId);
+        Task<bool> IsProjectNameUnique(string name);
 
     }
 }

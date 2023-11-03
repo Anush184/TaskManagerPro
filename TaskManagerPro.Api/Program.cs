@@ -1,3 +1,4 @@
+using TaskManagerPro.Api.Middleware;
 using TaskManagerPro.Application;
 using TaskManagerPro.Infrastructure;
 using TaskManagerPro.Persistence;
@@ -22,6 +23,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

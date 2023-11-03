@@ -19,7 +19,8 @@ public class ProjectTask: BaseEntity
     public Project Project { get; set; }
 
     public int? AssigneeId { get; set; }
-    public User Assignee { get; set; }
+    public User? Assignee { get; set; }
+    public bool IsClosed { get; set; }
 
     public ICollection<Comment>? Comments { get; set; }
 }

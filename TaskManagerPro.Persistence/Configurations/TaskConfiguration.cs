@@ -15,39 +15,29 @@ namespace TaskManagerPro.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<ProjectTask> builder)
         {
-            builder.HasData(
-                new ProjectTask()
-                {
-                    Id = 1,
-                    Description = "Task",
-                    Status = StatusOfTask.NotStarted,
-                    ProjectId = 1,
-                    Project = new Project() 
-                    {
-                        Id = 1,
-                        Name = "Project",
-                        CreatedAt = DateTime.Now,
-                        UpdatedAt = null,
-                        IsClosed = false,
-                        ManagerId = 1,
-                        Manager = new User() 
-                        {
-                            UserName = "UserName",
-                            Email = "user1@gmail.com",
-                            Phone = "094386742",
-                        },
-                        Tasks = null
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Title).IsRequired().HasMaxLength(255);
+            builder.Property(t => t.Description).IsRequired(false);
 
-                    },
-                    AssigneeId = 1,
-                    Assignee = new User(),
-                    Comments = null
-                }
-                );
+            
+            builder.HasOne(t => t.Project)
+                .WithMany(p => p.Tasks)
+                .HasForeignKey(t => t.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade); 
 
-            builder.Property(q => q.Description)
-                .IsRequired()
-                .HasMaxLength(1000);
+            
+            builder.HasOne(t => t.Assignee)
+                .WithMany(u => u.Tasks)
+                .HasForeignKey(t => t.AssigneeId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            
+            builder.HasMany(t => t.Comments)
+                .WithOne(c => c.Task)
+                .HasForeignKey(c => c.TaskId)
+                .OnDelete(DeleteBehavior.Cascade); 
         }
     }
+
+   
 }

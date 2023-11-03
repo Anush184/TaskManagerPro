@@ -54,5 +54,9 @@ namespace TaskManagerPro.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<bool> IsTaskTitleUnique(string title)
+        {
+            return await _context.ProjectTasks.AnyAsync(q => q.Title == title) == false;
+        }
     }
 }

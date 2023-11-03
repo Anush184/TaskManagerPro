@@ -15,15 +15,18 @@ public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand,
 {
     private readonly IMapper _mapper;
     private readonly IProjectRepository _projectRepository;
+    private readonly IUserRepository _userRepository;
 
-    public CreateProjectCommandHandler(IMapper mapper, IProjectRepository projectRepository)
+    public CreateProjectCommandHandler(IMapper mapper, 
+        IProjectRepository projectRepository, IUserRepository userRepository)
     {
         this._mapper = mapper;
         this._projectRepository = projectRepository;
+        this._userRepository = userRepository;
     }
     public async Task<int> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
     {
-        var validator = new CreateProjectCommandValidator(_projectRepository);
+        var validator = new CreateProjectCommandValidator(_projectRepository, _userRepository);
         var validatorResult = validator.Validate(request);
 
         if (validatorResult.Errors.Any())

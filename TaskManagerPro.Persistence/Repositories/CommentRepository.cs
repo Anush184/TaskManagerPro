@@ -27,8 +27,8 @@ namespace TaskManagerPro.Persistence.Repositories
         public async Task<IReadOnlyList<Comment>> GetCommentsByUserIdAsync(int userId)
         {
             return await _context.Comments
-                .Include(q => q.User)
-                .Where(comment => comment.UserId == userId)
+                .Include(q => q.TeamMember)
+                .Where(comment => comment.TeamMemberId == userId)
                 .AsNoTracking()
                 .ToListAsync();
         }

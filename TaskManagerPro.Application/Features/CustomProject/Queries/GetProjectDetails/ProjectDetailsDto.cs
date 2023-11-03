@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagerPro.Application.Features.Task.Queries.GetTaskDetails;
+using TaskManagerPro.Application.Features.CustomUser.Queries.GetAllUsers;
 using TaskManagerPro.Domain;
 
 namespace TaskManagerPro.Application.Features.CustomProject.Queries.GetProjectDetails;
@@ -10,12 +12,8 @@ namespace TaskManagerPro.Application.Features.CustomProject.Queries.GetProjectDe
 public class ProjectDetailsDto
 {
     public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; set; } 
-    public DateTime? UpdatedAt { get; set; } 
-    public string ManagerId { get; set; }
-    public int TeamId { get; set; }
-    public bool IsClosed { get; set; }
+    public string Name { get; set; }
+    public UserDto Manager { get; set; }
+    public List<TaskDetailsDto> Tasks { get; set; }
 
 }

@@ -13,5 +13,6 @@ namespace TaskManagerPro.Application.Contracts.Persistence
         Task<IReadOnlyList<ProjectTask>> GetTasksByAssigneeAsync(int assigneeId);
         Task<IReadOnlyList<ProjectTask>> GetOpenTasksAsync();
         Task<ProjectTask> GetTaskByIdWithCommentsAsync(int taskId);
+        Task<bool> IsTaskTitleUnique(string name);
     }
 }

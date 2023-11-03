@@ -11,8 +11,6 @@ namespace TaskManagerPro.Domain.Common
         public int Id { get; set; }  
         public DateTime CreatedAt { get; set; }  
         public DateTime? UpdatedAt { get; set; }  
-        public bool IsClosed { get; set; }  
-
         protected BaseEntity()
         {
             CreatedAt = DateTime.Now;

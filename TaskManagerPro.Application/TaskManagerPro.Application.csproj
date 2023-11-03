@@ -18,11 +18,4 @@
     <ProjectReference Include="..\TaskManagerPro.Domain\TaskManagerPro.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Comment\Commands\" />
-    <Folder Include="Features\Comment\Queries\" />
-    <Folder Include="Features\User\Commands\" />
-    <Folder Include="Features\User\Queries\" />
-  </ItemGroup>
-
 </Project>

@@ -15,5 +15,6 @@ public interface IUserRepository : IGenericRepository<User>
     Task<IReadOnlyList<User>> GetUsersByRoleAsync(Role roleName);
     Task<IReadOnlyList<User>> GetUserByTask(int taskId);
     Task<User> GetUserByPhone(string phone);
+    Task<bool> IsUserNameUnique(string username);
 }
 

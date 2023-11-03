@@ -52,6 +52,9 @@ namespace TaskManagerPro.Persistence.Repositories
                
 
         }
-
+        public async Task<bool> IsUserNameUnique(string username)
+        {
+            return await _context.Users.AnyAsync(u => u.UserName == username) == false;
+        }
     }
 }
